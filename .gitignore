@@ -116,4 +116,8 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+.fusebox/
 package-lock.json
+uploads
+static
+build
