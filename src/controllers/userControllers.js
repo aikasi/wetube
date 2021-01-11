@@ -39,9 +39,9 @@ export const postLogin = passport.authenticate("local", {
   failureFlash: "Can't log in. Check email and/or password",
 });
 
-export const githubLogin = passport.authenticate("github"{
-  successFlash:"Welcome",
-  failureFlash: "Can't log in at this time"
+export const githubLogin = passport.authenticate("github", {
+  successFlash: "Welcome",
+  failureFlash: "Can't log in at this time",
 });
 
 export const githubLoginCallback = async (
@@ -77,9 +77,9 @@ export const postGithubLogin = (req, res) => {
   res.redirect(routes.home);
 };
 
-export const facebookLogin = passport.authenticate("facebook",{
-  successFlash:"Welcome",
-  failureFlash: "Can't log in at this time"
+export const facebookLogin = passport.authenticate("facebook", {
+  successFlash: "Welcome",
+  failureFlash: "Can't log in at this time",
 });
 
 export const facebookLoginCallback = (
@@ -96,7 +96,7 @@ export const postFacebookLogin = (req, res) => {
 };
 
 export const logout = (req, res) => {
-  req.flash("info", "Logged out, see you later")
+  req.flash("info", "Logged out, see you later");
   req.logout();
   res.redirect(routes.home);
 };
@@ -117,7 +117,7 @@ export const userDetail = async (req, res) => {
     console.log(user);
     res.render("userDetail", { pageTitle: "User Detail", user });
   } catch (error) {
-    req.flash('error', "User not found")
+    req.flash("error", "User not found");
     res.redirect(routes.home);
   }
 };
@@ -135,10 +135,10 @@ export const postEditProfile = async (req, res) => {
       email,
       avatarUrl: file ? file.location : req.user.avatarUrl,
     });
-    req.flash('success',"Profile updated")
+    req.flash("success", "Profile updated");
     res.redirect(routes.me);
   } catch (error) {
-    req.flash('error',"Can't update profile")
+    req.flash("error", "Can't update profile");
     res.redirect(routes.editprofile);
   }
 };
@@ -153,7 +153,7 @@ export const postChangePassword = async (req, res) => {
   console.log(oldpassword, newpassword, newpassword1);
   try {
     if (newpassword !== newpassword1) {
-      req.flash("error","Passwrods don't match")
+      req.flash("error", "Passwrods don't match");
       res.status(400);
       res.redirect(`/users/${routes.changepassword}`);
       return;
@@ -164,7 +164,7 @@ export const postChangePassword = async (req, res) => {
     res.redirect(routes.me);
   } catch (error) {
     console.log(error);
-    req.flash('error',"Can't change password")
+    req.flash("error", "Can't change password");
     res.status(400);
     res.redirect(`/users/${routes.changepassword}`);
   }
