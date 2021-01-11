@@ -42,17 +42,17 @@
     "webpack-cli": "^3.3.12"
   },
   "scripts": {
-    "dev:server": "nodemon --exec babel-node src/init.js --delay 2 --ignore '.scss' --ignore 'static' ",
-    "dev:assets": "cd src && cross-env WEBPACK_ENV=development webpack -w",
-    "build:assets": "cd src && cross-env WEBPACK_ENV=production webpack",
-    "build:server": "babel src --out-dir build --ignore 'src/assets','src/static','src/webpack.config.js'",
+    "dev:server": "nodemon --exec babel-node init.js",
+    "dev:assets": "cd src && cross-env WEBPACK_ENV=development && webpack -w",
+    "build:assets": "cd src && cross-env WEBPACK_ENV=production && webpack",
+    "build:server": "babel src --out-dir build --ignore src/static --ignore src/assets --ignore src/webpack.config.js",
     "copyAll": "xcopy src\\static build\\static /d /e /h /c /y /i && xcopy src\\views build\\views /d /e /h /c /y /i",
     "_comment": "mac용: cp -R src/static build && cp -R src/views build",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
-    "prebuild":"rd /s \"build\"",
-     "_comment": "mac용: rm -rf build",
+    "prebuild": "rd /s \"build\"",
+    "_comment": "mac용: rm -rf build",
     "tunnel": "lt --port 4000",
-    "start":"node build/init.js",
+    "start":"PRODUCTION=true node build/init.js",
     "prestart":"npm run build"
   }, 
   "devDependencies": {
