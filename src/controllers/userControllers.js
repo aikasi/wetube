@@ -3,7 +3,7 @@ import routes from "../routes";
 import User from "../models/User";
 
 export const getJoin = (req, res) => {
-  res.render("Join", { pageTitle: "join" });
+  res.render("join", { pageTitle: "Join" });
 };
 
 export const postJoin = async (req, res, next) => {
@@ -29,7 +29,7 @@ export const postJoin = async (req, res, next) => {
 };
 
 export const gitLogin = (req, res) =>
-  res.render("Login", { pageTitle: "Log in" });
+  res.render("login", { pageTitle: "Log in" });
 export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.login,
   successRedirect: routes.home,
@@ -95,7 +95,7 @@ export const users = (req, res) => res.render("Users", { pageTitle: "Users" });
 
 export const getMe = async (req, res) => {
   console.log(req.user);
-  await res.render("UserDetail", { pageTitle: "User Detail", user: req.user });
+  await res.render("userDetail", { pageTitle: "User Detail", user: req.user });
 };
 
 export const userDetail = async (req, res) => {
@@ -105,13 +105,13 @@ export const userDetail = async (req, res) => {
   try {
     const user = await User.findById(id).populate("videos");
     console.log(user);
-    res.render("UserDetail", { pageTitle: "User Detail", user });
+    res.render("userDetail", { pageTitle: "User Detail", user });
   } catch (error) {
     res.redirect(routes.home);
   }
 };
 export const getEditProfile = (req, res) =>
-  res.render("EditProfile", { pageTitle: "Edit Profile" });
+  res.render("editProfile", { pageTitle: "Edit Profile" });
 
 export const postEditProfile = async (req, res) => {
   const {
@@ -131,7 +131,7 @@ export const postEditProfile = async (req, res) => {
 };
 
 export const getChangePassword = (req, res) =>
-  res.render("ChangePassword", { pageTitle: "Change Password" });
+  res.render("changePassword", { pageTitle: "Change Password" });
 
 export const postChangePassword = async (req, res) => {
   const {

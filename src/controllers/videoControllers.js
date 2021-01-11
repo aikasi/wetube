@@ -25,14 +25,14 @@ export const search = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-  res.render("Search", { pageTitle: "Search", searchingBy, videos });
+  res.render("search", { pageTitle: "Search", searchingBy, videos });
 };
 
 // export const videos = (req, res) =>
 //   res.render("videos", { pageTitle: "Videos" });
 
 export const getUpload = (req, res) => {
-  res.render("Upload", { pageTitle: "Upload" });
+  res.render("upload", { pageTitle: "Upload" });
 };
 
 export const postUpload = async (req, res) => {
